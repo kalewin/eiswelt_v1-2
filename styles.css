@@ -1,0 +1,331 @@
+body, * {
+ 
+    margin: 0;
+    padding: 0;
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    color: #b1b1b0;
+    font-weight: 300;
+}
+.Wrapper {
+ 
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.Zoomer {
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    overflow: visible;
+}
+
+#zoomInButton {
+ 
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    left: 110px;
+    top: 30px;
+    text-align: center;
+    
+    background-image: url(images/icons.png);
+    background-size: 120px 60px;
+    background-repeat: no-repeat;
+    background-position: -60px 0;
+    cursor: pointer;
+}
+
+#zoomOutButton {
+ 
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    left: 150px;
+    top: 30px;
+    text-align: center;
+    
+    background-image: url(images/icons.png);
+    background-size: 120px 60px;
+    background-repeat: no-repeat;
+    background-position: -90px 0;
+    cursor: pointer;
+}
+
+#infoButton{
+   position: absolute;
+    height: 30px;
+    width: 30px;
+    left: 30px;
+    top: 30px;
+    text-align: center;
+}
+#infoButton a{
+    display: block;
+    height: 100%;
+    background-image: url(images/icons.png);
+    background-size: 120px 60px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+#infoButton a:hover{
+background-position: 0px -30px;
+}
+#timeButton{
+   position: absolute;
+    height: 30px;
+    width: 30px;
+    left: 70px;
+    top: 30px;
+    text-align: center;
+}
+#timeButton a{
+    display: block;
+    height: 100%;
+    background-image: url(images/icons.png);
+    background-size: 120px 60px;
+    background-repeat: no-repeat;
+    background-position: -30px 0px;
+}
+#timeButton a:hover{
+background-position: -30px -30px;
+} 
+
+/*-------------------------------text------------------------*/
+.explanation {
+    position: absolute;
+    opacity: 0;
+}
+.explanation a {
+font-family: 'Libre Baskerville', serif;
+}
+
+/*-------------------------------planeten allgemeine settings------------------------*/
+.Elements {
+    
+    position: absolute;
+}
+
+.planet a {
+    display: block;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-image: url(images/planet.png);
+
+    transition: background 2s;
+    -moz-transition: background 2s;
+    -ms-transition: background 2s;
+    -o-transition: background 2s;
+    -webkit-transition: background 2s;
+}
+.BigPlanet a{
+    background-size: 40px 40px;
+}
+.MediumPlanet a{
+    background-size: 30px 30px;
+}
+.SmallPlanet a{
+    background-size: 20px 20px;
+}
+
+.BigPlanet {
+    margin-top: -20px;
+    margin-left: -20px;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+}
+
+
+.MediumPlanet {
+    margin-top: -15px;
+    margin-left: -15px;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+}
+.SmallPlanet {
+    
+    margin-top: -10px;
+    margin-left: -10px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+
+/*-------------------------------planeten individuelle settings------------------------*/
+
+#LauGal{
+    top: 0px; 
+    left: 0px;
+}
+#LauGal a:hover{
+  background-image: url(images/laugal-hover.png);
+  background-size: 40px 40px;
+}
+#LauText{
+top: 30px;
+left: -30px;
+}
+#LauText .explanation{
+top: 20px;
+width: 500px;
+left: 15px;  
+}
+
+#OertGal {
+    top: 10px;
+    left: 80px;
+}
+
+#OertGal a:hover{
+  background-image: url(images/oertgal-hover.png);
+  background-size: 30px 30px;
+}
+
+#NbgGal {
+    top: 400px;
+    left: -100px;
+}
+#NbgGal a:hover{
+    background-image: url(images/nbggal-hover.svg);
+    background-size: 30px 30px;
+}
+#NbgText{
+top:380px;
+left: -140px;
+}
+#NbgText .explanation{
+top: 10px;
+width: 500px;
+left: -500px; 
+}
+
+#MuenGal{
+top: 550px;
+left: 140px;
+}
+
+#TaizGal {
+    top: 1000px;
+    left: -1260px;
+}
+
+#PariGal {
+    top: 420px;
+    left: -1560px;
+}
+
+#LissGal {
+    top: 3000px;
+    left: -2700px;
+}
+
+#PeniGal {
+    top: 2900px;
+    left: -2750px;
+}
+
+#PortoGal {
+    top: 2260px;
+    left: -2780px;
+}
+
+#RomGal {
+    top: 2140px;
+    left: 250px;
+}
+
+#NapoGal {
+    top: 2350px;
+    left: 300px;
+}
+
+#GardaGal {
+    top: 1200px;
+    left: -100px;
+}
+
+#LonGal {
+    top: -300px;
+    left: -2050px;
+}
+#LonText{
+    top: -320px;
+    left: -2000px;
+}
+
+#BournGal {
+    top: 0px;
+    left: -2500px;
+}
+
+#BrigGal {
+    top: -20px;
+    left: -2050px;
+}
+
+#MiddGal {
+top: -1060px;
+left: -2250px;
+}
+
+#AberysGal {
+    top: -500px;
+    left: -2720px;
+}
+
+#GlasGal {
+    top: -1200px;
+    left: -2660px;
+}
+
+#BornhGal {
+    top: -1250px;
+    left: 420px;
+}
+
+#OsloGal {
+    top: -2600px;
+    left: -250px;
+}
+
+#BergGal {
+    top: -2950px;
+    left: -1200px;
+}
+
+#NamelessLake1Gal {
+    top: -2550px;
+    left: -500px;
+}
+
+#StavGal {
+    top: -2360px;
+    left: -1150px;
+}
+
+#SalzGal {
+    top: 550px;
+    left: 350px;
+}
+
+#WienGal {
+    top: 650px;
+    left: 780px;
+}
+
+#IstanGal {
+    top: 2250px;
+    left: 3200px;
+}
+
+#IstanPriGal {
+    top: 2280px;
+    left: 3250px;
+}

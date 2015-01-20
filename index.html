@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="styles.css">
+<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic' rel='stylesheet' type='text/css'>
+<script src="jquery.min.js"></script>
+<title>eiswelt</title>
+    </head>
+    
+    <body>
+        <div class="Wrapper">
+            <div class="Zoomer">
+                <div class="Elements">
+                    <canvas id="lines"></canvas>
+                    
+                    <!-----------Deutschland + Schweiz + Austria-------------->
+                    <div id="LauGal" class="planet BigPlanet"><a href="#"></a>
+                        <div class="content">
+                            <img src="http://www.tagesspiegel.de/images/pegida_neu_afp/11246536/3-format530.JPG" />
+                        </div>
+                    </div>
+                    <div id="LauText" class="planet SmallPlanet"><a href="#"></a></a>
+                        <div class="explanation">"dort kann ich nicht bleiben, dort sehn ich mich hin"</div>
+                    </div>
+                    <div id="OertGal" class="planet MediumPlanet"><a href="#"></a></div>
+                    <div id="NbgGal" class="planet MediumPlanet"><a href="#"></a></div>
+                    <div id="NbgText" class="planet SmallPlanet"><a href="#"></a></a>
+                        <div class="explanation">" manchmal hat es den Anschein, als wäre hier keine einzige Bank dazu aufgestellt worden, den Menschen eine Freude zu machen " Unbekannt</div>
+                    </div>
+                    <div id="MuenGal" class="planet MediumPlanet"><a href="#"></a></div>
+                    <div id="SalzGal" class="planet BigPlanet"><a href="#"></a></div>
+                    <div id="WienGal" class="planet MediumPlanet"><a href="#"></a></div>
+            <!-----------Frankreich-------------->
+                    <div id="TaizGal" class="planet MediumPlanet"><a href="#"></a></div>
+                    <div id="PariGal" class="planet BigPlanet"><a href="#"></a></div>
+            <!-----------Portugal-------------->
+                    <div id="LissGal" class="planet BigPlanet"><a href="#"></a></div>
+                    <div id="PeniGal" class="planet MediumPlanet"><a href="#"></a></div>
+                    <div id="PortoGal" class="planet BigPlanet"><a href="#"></a></div>
+            <!-----------Italien-------------->
+                    <div id="RomGal" class="planet BigPlanet"><a href="#"></a></div>
+                    <div id="NapoGal" class="planet MediumPlanet"><a href="#"></a></div>
+                    <div id="GardaGal" class="planet MediumPlanet"><a href="#"></a></div>
+            <!-----------UK-------------->
+                    <div id="LonGal" class="planet BigPlanet"><a href="#"></a></div>
+                    <div id="LonText" class="planet SmallPlanet"><a href="#"></a></a>
+                        <div class="explanation">" I'm from New York baby. My lips are so red because of my herpes. " Hat-Guy</div>
+                    </div>
+                    <div id="BrigGal" class="planet MediumPlanet"><a href="#"></a></div>
+                    <div id="BournGal" class="planet BigPlanet"><a href="#"></a></div>
+                    <div id="AberysGal" class="planet MediumPlanet"><a href="#"></a></div>
+                    <div id="MiddGal" class="planet MediumPlanet"><a href="#"></a></div>
+                    <div id="GlasGal" class="planet MediumPlanet"><a href="#"></a></div>
+            <!-----------Skandinavien-------------->
+                    <div id="BornhGal" class="planet BigPlanet"><a href="#"></a></div>
+                    <div id="OsloGal" class="planet MediumPlanet"><a href="#"></a></div>
+                    <div id="BergGal" class="planet BigPlanet"><a href="#"></a></div>
+                    <div id="NamelessLake1Gal" class="planet MediumPlanet"><a href="#"></a></div>
+                    <div id="StavGal" class="planet MediumPlanet"><a href="#"></a></div>
+            <!-----------Türkei-------------->
+                    <div id="IstanGal" class="planet BigPlanet"><a href="#"></a></div>
+                    <div id="IstanPriGal" class="planet MediumPlanet"><a href="#"></a></div>
+
+                </div>
+            </div>
+        </div>
+        
+        
+        <script>
+        var canvas = null;
+        var wrapper = null;
+        var lastPlanet = null;
+        var elements = null;
+        var canvasCtx = null;
+        var visitedPlanets = [];
+
+        var getCanvasCtx = function() {
+            if (canvasCtx == null) {
+                var c=canvas.get(0);
+                var ctx=c.getContext("2d");
+                ctx.beginPath();
+                canvasCtx = ctx;
+            }
+            return canvasCtx;
+        }
+
+        var drawLine = function(fromX,fromY,toX,toY) {
+            var ctx = getCanvasCtx();
+            ctx.moveTo(fromX,fromY);
+            ctx.lineTo(toX,toY);
+
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = '#ff0000';
+            
+            ctx.stroke();
+        }
+        
+        positionCanvas = function(){
+            console.log(elements.offset().top+':'+elements.offset().left);
+            canvas.css({
+                position: 'absolute',
+                height: wrapper.height(),
+                width: wrapper.width(),
+                top: elements.offset().top * -1,
+                left: elements.offset().left * -1
+
+            }).attr({
+                height: wrapper.height(),
+                width: wrapper.width()
+            });
+
+            drawLines();
+        }
+        var drawLines = function() {
+            var lastPlanet = null;
+            for (i in visitedPlanets) {
+                planet = visitedPlanets[i];
+                console.log(elements.position().left);
+                if (lastPlanet !== null) {
+                    drawLine(
+                        lastPlanet.offset().left + lastPlanet.width() / 2 - planePosition.left,
+                        lastPlanet.offset().top + lastPlanet.height() / 2 - planePosition.top,
+                        planet.offset().left + planet.width() / 2 - planePosition.left,
+                        planet.offset().top + planet.height() / 2 - planePosition.top
+                    );
+                }
+                lastPlanet = planet;
+            }            
+        } 
+        var addPlanet = function(isWindow) {
+            if (visitedPlanets.length === null) {
+                console.log('last planet set');
+                visitedPlanets.push($(this));
+                return;
+            }
+            visitedPlanets.push($(this));
+        
+            drawLines();
+        }
+        
+        
+        $(window).resize(function(){
+            positionCanvas();
+        });
+        $(document).bind("planeMoved", function(){
+            positionCanvas();
+        });
+        
+        jQuery(function($){
+            canvas = $('canvas#lines');
+            wrapper = $('.Wrapper');
+            elements = $('.Elements');
+            
+            planePosition = {
+                left: elements.position().left,
+                top: elements.position().top
+            }
+            
+            
+            canvas.css({
+                position: 'absolute',
+                height: wrapper.height(),
+                width: wrapper.width(),
+                top: wrapper.height() / 2 * -1,
+                left: wrapper.width() / 2 * -1
+            }).attr({
+                height:wrapper.height(),
+                width:wrapper.width()
+            });
+
+            $('.BigPlanet a, .MediumPlanet a').click(addPlanet);
+            $('.SmallPlanet').mouseover(addPlanet);
+        });
+        </script>
+        
+        <div id="infoButton"><a href="#"></a></div>
+        <div id="timeButton"><a href="#"></a></div>
+        <div id="zoomOutButton"></div>
+        <div id="zoomInButton"></div>
+        
+        <div class="backdrop"></div>
+        <div class="backdrop-content">
+        
+        </div>        
+        <script src="script.js"></script>
+
+        <style>
+        .backdrop {
+            position:absolute;
+            left:0;
+            top:0;
+            width:100%;
+            height:100%;
+            background:#000;
+            opacity:0;
+            display:none;
+        }
+        .backdrop.active {
+            transition:1s;
+            opacity:0.5;
+            display:block;
+        }
+        
+        .backdrop .content {
+            padding:20pxs;
+        }
+        .backdrop-content {
+            position:absolute;
+            margin:50px;
+            display:none;
+        }
+        
+        .planet .content {
+            display:none;
+        }
+        </style>
+        <script>
+
+        var backdrop = $('.backdrop');
+        var backdropContent = $('.backdrop-content');
+        
+        $('.BigPlanet a, .MediumPlanet a').click(function(){
+            return;
+            var content = $(this).closest('.planet').find('.content').clone();
+            
+            backdrop.animate({
+                opacity:0.5,
+                display:'block'
+            },500,function(){
+              backdropContent
+                  .empty()
+                  .append(content)
+                  .show();
+            }).show();
+        });
+        backdrop.click(function(){
+            backdrop.hide();
+            backdropContent.hide(); 
+        });
+        </script>
+    </body>
+    
+</html>
