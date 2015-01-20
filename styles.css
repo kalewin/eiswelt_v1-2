@@ -329,3 +329,33 @@ left: -2250px;
     top: 2280px;
     left: 3250px;
 }
+
+
+.backdrop {
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:#000;
+    opacity:0;
+    display:none;
+}
+.backdrop.active {
+    transition:1s;
+    opacity:0.5;
+    display:block;
+}
+
+.backdrop .content {
+    padding:20pxs;
+}
+.backdrop-content {
+    position:absolute;
+    margin:50px;
+    display:none;
+}
+
+.planet .content {
+    display:none;
+}
