@@ -96,9 +96,19 @@ background-position: -30px -30px;
 } 
 
 /*-------------------------------text------------------------*/
+
+
+.SmallPlanet a:hover .explanation {
+    display:block;
+    opacity:1;
+}
 .explanation {
     position: absolute;
-    opacity: 0;
+    display:none;
+    opacity:0;
+    transition: opacity 2s;
+    -moz-transition: opacity 2s;
+    -webkit-transition: opacity 2s;
 }
 .explanation a {
 font-family: 'Libre Baskerville', serif;

@@ -22,20 +22,14 @@ function onDocumentReady() {
     $(".Wrapper").bind("mousedown", onWrapperMousedown);
     $(document).bind("mouseup", onWrapperMouseup);
     $(".Wrapper").bind("mousemove", onWrapperMousemove);
-    $(".Wrapper").bind("gesturechange", onWrapperGestureChange);
+    //$(".Wrapper").bind("gesturechange", onWrapperGestureChange);
     
     $("#zoomInButton").bind("click", onZoomInButtonClick);
     $("#zoomOutButton").bind("click", onZoomOutButtonClick);
     
-    $(".SmallPlanet").bind("mouseover", onSmallPlanetMouseOver);
-    $(".SmallPlanet").bind("mouseout", onSmallPlanetMouseOut);
+    //$(".SmallPlanet").bind("mouseover", onSmallPlanetMouseOver);
+    //$(".SmallPlanet").bind("mouseout", onSmallPlanetMouseOut);
     // $(".BigPlanet").bind("click", onBigPlanetClick);
-}
-
-function onBigPlanetClick() {
- 
-    console.log("BigPlanetClick ");
-    //$(this).children(".explanation").css("opacity", 1);
 }
 
 function onSmallPlanetMouseOver() {
@@ -74,15 +68,7 @@ function onWrapperMousemove(event) {
     scrollYPos = startScrollYPos - distY/zoom;
     
     updateZoomAndPosition();
-    
-    console.log("mouse move ", scrollXPos, scrollYPos);
 }
-
-function onWrapperGestureChange(event) {
-    
-    console.log("gesture", event);
-}
-
 function onInterval() {
     
     if (dZoom < 0.1)
@@ -150,7 +136,6 @@ var drawLine = function(fromX,fromY,toX,toY) {
 }
 
 positionCanvas = function(){
-    console.log(elements.offset().top+':'+elements.offset().left);
     canvas.css({
         position: 'absolute',
         height: wrapper.height(),
@@ -169,8 +154,8 @@ var drawLines = function() {
     var lastPlanet = null;
     for (i in visitedPlanets) {
         planet = visitedPlanets[i];
-        console.log(elements.position().left);
         if (lastPlanet !== null) {
+            console.log(planePosition.left);
             drawLine(
                 lastPlanet.offset().left + lastPlanet.width() / 2 - planePosition.left,
                 lastPlanet.offset().top + lastPlanet.height() / 2 - planePosition.top,
@@ -183,7 +168,6 @@ var drawLines = function() {
 } 
 var addPlanet = function(isWindow) {
     if (visitedPlanets.length === null) {
-        console.log('last planet set');
         visitedPlanets.push($(this));
         return;
     }
@@ -210,7 +194,6 @@ jQuery(function($){
         top: elements.position().top
     }
     
-    
     canvas.css({
         position: 'absolute',
         height: wrapper.height(),
@@ -232,8 +215,8 @@ jQuery(function($){
 var backdrop = $('.backdrop');
 var backdropContent = $('.backdrop-content');
 
-$('.BigPlanet a, .MediumPlanet a').click(function(){
-    var content = $(this).closest('.planet').find('.content').clone();
+$('.BigPlanet a, .MediumPlanet a, #infoButton a').click(function(){
+    var content = $(this).closest('div').find('.content').clone();
     
     backdrop.animate({
         opacity:0.5,
