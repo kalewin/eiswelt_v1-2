@@ -203,29 +203,35 @@ left: 15px;
     left: -100px;
 }
 #NbgGal a:hover{
-    background-image: url(images/nbggal-hover.svg);
+    background-image: url(images/nbggal-hover.png);
     background-size: 30px 30px;
 }
 #NbgText{
-top:380px;
-left: -140px;
+    top:380px;
+    left: -140px;
 }
 #NbgText .explanation{
-top: 10px;
-width: 500px;
-left: -500px; 
+    top: 10px;
+    width: 500px;
+    left: -500px; 
 }
 
 #MuenGal{
-top: 550px;
-left: 140px;
+    top: 550px;
+    left: 140px;
 }
-
+#MuenGal a:hover{
+    background-image: url(images/muengal-hover.png);
+    background-size: 30px 30px;
+}
 #TaizGal {
     top: 1000px;
     left: -1260px;
 }
-
+#TaizGal a:hover{
+    background-image: url(images/taizgal-hover.png);
+    background-size: 30px 30px;
+}
 #PariGal {
     top: 420px;
     left: -1560px;
